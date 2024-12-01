@@ -10,5 +10,5 @@
 
 ### Part 2
 ```
-
+[Part 2] Total similarity score: 23529853
 ```
