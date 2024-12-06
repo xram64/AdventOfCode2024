@@ -12,3 +12,16 @@
 ```
 [Part 2] Total similarity score: 23529853
 ```
+
+
+## 📅 Day 2
+
+### Part 1
+```
+[Part 1] Number of safe reports: 479 / 1000
+```
+
+### Part 2
+```
+
+```
