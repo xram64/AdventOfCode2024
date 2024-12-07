@@ -36,5 +36,5 @@
 
 ### Part 2
 ```
-
+[Part 2] Resulting sum of enabled `mul` instructions: 92626942
 ```
