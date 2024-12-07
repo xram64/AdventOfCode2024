@@ -23,5 +23,6 @@
 
 ### Part 2
 ```
-
+[Part 2] Number of safe reports with dampener: 531 / 1000
 ```
+
