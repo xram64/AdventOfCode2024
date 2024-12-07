@@ -26,3 +26,15 @@
 [Part 2] Number of safe reports with dampener: 531 / 1000
 ```
 
+
+## 📅 Day 3
+
+### Part 1
+```
+[Part 1] Resulting sum of `mul` instructions: 159892596
+```
+
+### Part 2
+```
+
+```
