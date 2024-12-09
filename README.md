@@ -38,3 +38,16 @@
 ```
 [Part 2] Resulting sum of enabled `mul` instructions: 92626942
 ```
+
+
+## 📅 Day 4
+
+### Part 1
+```
+[Part 1] 'XMAS' found 2571 times.
+```
+
+### Part 2
+```
+
+```
