@@ -49,5 +49,5 @@
 
 ### Part 2
 ```
-
+[Part 2] 'X-MAS' found 1992 times.
 ```

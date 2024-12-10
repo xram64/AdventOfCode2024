@@ -8,7 +8,7 @@
 #   ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾   #
 #             __.-----------.___________________________             #
 #            |  |  Answers  |   Part 1: 2571            |            #
-#            |  `-----------'   Part 2:                 |            #
+#            |  `-----------'   Part 2: 1992            |            #
 #            `------------------------------------------'            #
 #│░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░│#
 
@@ -87,12 +87,21 @@ def check_diagonals(WS: list[list], start: tuple[int, int], target_word: str) ->
         if WS.getLetter(Pos(start.row - i, start.col - i)) != target_word[i]: break
     else: words_found += 1
     
-    # Diagonal - Toward SW  (↙)
+    # Diagonal - Toward SW (↙)
     for i in range(1, len(target_word)):
         if WS.getLetter(Pos(start.row + i, start.col - i)) != target_word[i]: break
     else: words_found += 1
     
     return words_found
+
+def check_cross(WS: list[list], start: tuple[int, int]) -> int:
+    return (    # NE (↗) + SW (↙)
+        WS.getLetter(Pos(start.row - 1, start.col + 1)) == 'M' and WS.getLetter(Pos(start.row + 1, start.col - 1)) == 'S' or
+        WS.getLetter(Pos(start.row - 1, start.col + 1)) == 'S' and WS.getLetter(Pos(start.row + 1, start.col - 1)) == 'M'
+    ) and (     # NW (↖) + SE (↘)
+        WS.getLetter(Pos(start.row - 1, start.col - 1)) == 'M' and WS.getLetter(Pos(start.row + 1, start.col + 1)) == 'S' or
+        WS.getLetter(Pos(start.row - 1, start.col - 1)) == 'S' and WS.getLetter(Pos(start.row + 1, start.col + 1)) == 'M'
+    )
 
 
 #╷----------.
@@ -113,8 +122,14 @@ def Part1(WS: WordSearch, target_word: str) -> int:
 #╷----------.
 #│  Part 2  │
 #╵----------'
-def Part2(WS: WordSearch, target_word: str) -> int:
-    ...
+def Part2(WS: WordSearch) -> int:
+    # Scan through grid, stopping at any 'A's. Check diagonals around the 'A' for 'M' and 'S' on opposite sides.
+    total_crosses_found = 0
+    for row_index, row in enumerate(WS.grid):
+        for col_index, letter in enumerate(row):
+            if letter == 'A' and check_cross(WS, Pos(row_index, col_index)):
+                total_crosses_found += 1
+    return total_crosses_found
 
 
 if __name__ == "__main__":
@@ -130,7 +145,6 @@ if __name__ == "__main__":
     
     WS = WordSearch(grid)
     
-    
     print(f"[Part 1] 'XMAS' found {Part1(WS, target_word)} times.")
     
-    # print(f"[Part 2] : {Part2(WS, target_word)}")
+    print(f"[Part 2] 'X-MAS' found {Part2(WS)} times.")
